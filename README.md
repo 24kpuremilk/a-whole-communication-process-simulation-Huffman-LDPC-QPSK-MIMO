@@ -7,8 +7,8 @@ In detail, there are 5 steps to simulate this:
    So if Gallger's method doesn't work, then I use Mackey's method, which construct PC matrix randomly first. This method can failed either.
 3. At last, the LDPC code method specified in IEEE® 802.11 is used. It use a Quasi-cycle matrix. I didn't write too much detail in this function, as it has function in MATLAB toolbox, which cannot be modified.
    However, it need append some bits ("0"s in this project) to let it works.
-4. We use QPSK to modulate the binary sequence.
-5. Assume that the signal is transmitted through a MIMO channel， where the noise is Additive White Gaussian Noise.
-6. Demodulate the signal to a Log-likelihood sequence.
+4. We use 8PSK to modulate the binary sequence.
+5. Assume that the signal is transmitted through a MIMO Rayleigh fading channel, where the noise is Additive White Gaussian Noise. Implementation steps comes as follows. 
+6. For the detected octal symbols, we acquire the redundance information from the last packet to determine the length of the transmitted binary sequences. Then we recover the LDPC encoded binary sequences after omitting all the padding bits. 
 7. Decode the LDPC-encoded Log-likelihood sequence to recover the sequence before LDPC encode.
 8. Decode the binary sequence to the text use Huffman Decoding method (If you use ASCII/UTF-8, you should decode it with the same method).
